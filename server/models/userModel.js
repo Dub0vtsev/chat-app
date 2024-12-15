@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
         enum: ["self", "google"],
         default: "self"
     }
-});
+}, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);
 export default User;

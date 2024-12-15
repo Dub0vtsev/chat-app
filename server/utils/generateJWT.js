@@ -7,7 +7,7 @@ const generateJWT = (user, res) => {
 
     // Send the token as a cookie and response
     res
-        .cookie('token', token, {
+        .cookie("token", token, {
             httpOnly: true,
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7d in milliseconds
             sameSite: "strict"
