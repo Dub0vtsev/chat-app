@@ -1,11 +1,10 @@
 import './App.css';
-import GoogleAuth from './components/googleAuth.jsx';
+import Login from './pages/login/Login.jsx';
 
 function App() {
   return (
     <div className="App">
-      <h1>HELLO</h1>
-      <GoogleAuth />
+      <Login />
     </div>
   );
 }
