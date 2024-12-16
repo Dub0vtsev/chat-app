@@ -13,10 +13,10 @@ export const sendMessage = async (req, res) => {
 
         // if first message is sent
         if (!conversation) {
-            conversation = Conversation.create({
-                participants: [senderId, recieverId]
+            conversation = await Conversation.create({
+                participants: [senderId, recieverId],
             });
-        }
+        };
 
         const newMessage = new Message({
             sender: senderId,
@@ -25,8 +25,8 @@ export const sendMessage = async (req, res) => {
         });
 
         if (newMessage) {
-            conversation.messages.push(newMessage._id);
-        }
+            conversation?.messages.push(newMessage._id);
+        };
 
         await Promise.all([conversation.save(), newMessage.save()]);
 
@@ -35,4 +35,23 @@ export const sendMessage = async (req, res) => {
     } catch (err) {
         res.status(400).json({ error: `Error: ${err.message}` });
     }
-}
+};
+
+export const getMessages = async (req, res) => {
+    try {
+        const { recieverId } = req.params; // person to who messages were sent
+        const senderId = req.user._id; // person who makes request to get messages
+
+        const conversation = await Conversation.findOne({
+            participants: { $all: [senderId, recieverId] }
+        }).populate("messages");
+
+        if (!conversation) {
+            return res.status(200).json([]);
+        }
+
+        return res.status(200).json(conversation.messages);
+    } catch (err) {
+        res.status(400).json({ error: `Error: ${err.message}` });
+    }
+};

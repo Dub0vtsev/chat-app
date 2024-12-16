@@ -1,9 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+
 import { connectDB } from './config/db.js';
-import authRoutes from './routes/authRoutes.js'
-import messageRoutes from './routes/messageRoutes.js'
+import authRoutes from './routes/authRoutes.js';
+import messageRoutes from './routes/messageRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 dotenv.config();
 
@@ -19,6 +21,7 @@ app.get("/", (req, res) => {
 
 app.use("/auth", authRoutes);
 app.use("/messages", messageRoutes);
+app.use("/users", userRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
