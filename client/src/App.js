@@ -3,7 +3,7 @@ import Login from './pages/login/Login.jsx';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Login />
     </div>
   );

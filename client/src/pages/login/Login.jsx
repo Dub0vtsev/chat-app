@@ -7,18 +7,24 @@ import GoogleAuth from '../../components/googleAuth.jsx';
 
 const Login = () => {
     return (
-        <div>
-            <p>Login</p>
-            <input />
-            <input />
+        <div className={styles.container}>
+            <h1>Login</h1>
+
+            <div className={styles.inputs}>
+                <span>Email</span>
+                <input type="email" id="email" />
+                <span>Password</span>
+                <input type="password" id="password" />
+            </div>
+
+
             <button>Login</button>
-            <div>
+            <div className={styles.divider}>
                 <span>Or</span>
             </div>
-            <div>
+            <div className={styles.socialsContainer}>
                 <GoogleAuth />
-                <a>Facebook</a>
-                <a>LinkedIn</a>
+                <a>asdasd</a>
             </div>
         </div>
     )
