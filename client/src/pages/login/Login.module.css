@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     height: 450px;
     width: 350px;
     padding: 40px;
@@ -13,6 +14,7 @@
     /* box-shadow: 0px 0px 31px 14px rgba(205, 205, 205, 1); */
     color: #3c4152;
 }
+
 
 .inputs {
     display: flex;
@@ -48,10 +50,11 @@ button {
     height: 45px;
     border: 2px solid #A3A6AE;
     border-radius: 5px;
-    cursor: pointer;
     background-color: white;
     color: #3c4152;
     transition: all 0.3s ease-out;
+    width: 100%;
+    cursor: pointer;
 }
 
 button:hover {
@@ -88,9 +91,7 @@ button:hover {
 
 .socialsContainer {
     display: flex;
-    flex-direction: column;
-}
-
-.socialsContainer * {
-    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
 }

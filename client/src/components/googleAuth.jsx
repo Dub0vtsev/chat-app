@@ -11,6 +11,9 @@ const GoogleAuth = () => {
             onError={() => {
                 console.log('Login Failed');
             }}
+            type='icon'
+            shape='circle'
+            size='large'
         />);
 };
 export default GoogleAuth;
