@@ -1,0 +1,26 @@
+.userControlsContainer {
+    display: flex;
+    height: 100px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 300px;
+}
+
+.userName {
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logoutBtn {
+    padding: 0;
+    margin: 0;
+    max-width: 100px;
+}

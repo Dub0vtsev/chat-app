@@ -1,0 +1,48 @@
+.messageContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.message p {
+    border-radius: 25px;
+    padding: 15px 20px;
+}
+
+.message:last-of-type {
+    margin-bottom: 25px;
+}
+
+.chatEnd {
+    justify-content: flex-end;
+}
+
+.chatEnd p {
+    background-color: #dfdfdf;
+}
+
+.chatStart p {
+    background-color: #3b4254;
+    color: white;
+    margin-left: 10px;
+}
+
+.messageDate {
+    font-size: 12px;
+    position: absolute;
+    bottom: 0;
+}
+
+.chatStart .messageDate {
+    left: 80px;
+}
+
+.chatEnd .messageDate {
+    right: 40px;
+}

@@ -1,0 +1,35 @@
+.conversation {
+    display: flex;
+    height: 85px;
+    width: 100%;
+    align-items: center;
+    border-bottom: 2px solid #A3A6AE;
+    padding-left: 30px;
+    box-sizing: border-box;
+}
+
+.conversation:hover {
+    cursor: pointer;
+    background-color: #f5f5f5;
+}
+
+.shortInfo {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.shortInfo .userName {
+    margin-bottom: 5px;
+}
+
+.shortInfo p {
+    margin-left: 20px;
+}
+
+.date {
+    display: inline;
+    min-width: 100px;
+    box-sizing: border-box;
+    margin-right: 15px;
+}

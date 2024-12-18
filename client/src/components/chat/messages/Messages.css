@@ -1,0 +1,5 @@
+.messagesContainer {
+    height: 100vh;
+    overflow: auto;
+    background-color: #fbf8f9;
+}
