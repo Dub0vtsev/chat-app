@@ -1,8 +1,7 @@
 import React from 'react';
 import './Marquee.css';
 
-
-const Marquee = ({ text, repeatCount = 100 }) => {
+const Marquee = ({ text, repeatCount = 150 }) => {
 
     const repeatedText = Array(repeatCount).fill(text);
 
