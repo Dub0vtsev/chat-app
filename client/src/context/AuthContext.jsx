@@ -1,6 +1,7 @@
 import { googleLogout } from "@react-oauth/google";
 import { createContext, useState, useEffect } from "react";
 import { $host } from "../http/index.js";
+import useConversations from '../store/useConversations.js';
 
 export const AuthContext = createContext();
 
@@ -10,6 +11,8 @@ export const AuthContextProvider = ({ children }) => {
         ||
         null
     );
+
+    const { selectedConv, setSelectedConv } = useConversations();
 
     useEffect(() => {
         const verifyToken = async () => {
@@ -36,6 +39,7 @@ export const AuthContextProvider = ({ children }) => {
 
     const handleLogout = () => {
         localStorage.removeItem("authUser");
+        setSelectedConv(null);
         googleLogout();
         setAuthUser(null);
     };

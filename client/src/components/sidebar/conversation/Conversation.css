@@ -8,9 +8,13 @@
     box-sizing: border-box;
 }
 
+.selected {
+    background-color: #c9c8c8;
+}
+
 .conversation:hover {
     cursor: pointer;
-    background-color: #f5f5f5;
+    background-color: #c9c8c8;
 }
 
 .shortInfo {
