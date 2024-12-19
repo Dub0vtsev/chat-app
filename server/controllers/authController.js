@@ -1,6 +1,7 @@
 import { OAuth2Client } from 'google-auth-library';
 import generateJWT from '../utils/generateJWT.js';
 import User from '../models/userModel.js';
+import Conversation from '../models/conversationModel.js';
 
 import jwt from 'jsonwebtoken';
 
@@ -49,10 +50,49 @@ export const googleAuth = async (req, res) => {
             });
         }
 
+        // я знаю що це жахливо, немає часу на красу 
+
+        let conversationBot1 = await Conversation.findOne({
+            participants: { $all: [user._id, process.env.BOT_1_ID] }
+        });
+
+        if (!conversationBot1) {
+            conversationBot1 = await Conversation.create({
+                participants: [user._id, process.env.BOT_1_ID],
+            });
+        };
+
+        let conversationBot2 = await Conversation.findOne({
+            participants: { $all: [user._id, process.env.BOT_2_ID] }
+        });
+
+        if (!conversationBot2) {
+            conversationBot2 = await Conversation.create({
+                participants: [user._id, process.env.BOT_2_ID],
+            });
+        };
+
+        let conversationBot3 = await Conversation.findOne({
+            participants: { $all: [user._id, process.env.BOT_3_ID] }
+        });
+
+        if (!conversationBot3) {
+            conversationBot3 = await Conversation.create({
+                participants: [user._id, process.env.BOT_3_ID],
+            });
+        };
+
         if (!user) {
             throw new Error('User creation or retrieval failed.');
         }
 
+        await Promise.all([
+            conversationBot1.save(),
+            conversationBot2.save(),
+            conversationBot3.save()
+        ]);
+
+        payload._id = user._id;
         payload.token = generateJWT(user, res);
         res.status(200).json({ payload });
     } catch (err) {

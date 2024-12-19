@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { $host } from '../http/index.js';
+import useConversations from '../store/useConversations.js';
 
 const useGetConversations = () => {
-    const [conversations, setConversations] = useState([]);
+    const { conversations, setConversations } = useConversations();
 
     useEffect(() => {
         const getConversations = async () => {

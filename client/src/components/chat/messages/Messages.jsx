@@ -2,26 +2,19 @@ import React from 'react';
 import Message from '../message/Message.jsx';
 import './Messages.css';
 import useConversations from '../../../store/useConversations';
+import useGetMessages from '../../../hooks/useGetMessages.js';
 
 const Messages = () => {
-    const { selectedConv, setSelectedConv } = useConversations();
+    const { selectedConv } = useConversations();
+    const { messages } = useGetMessages();
 
     return (
         <div className='messagesContainer'>
-            <Message src={selectedConv.userInfo.profilePicture} content='asdasdasd' date='8/17/2022, 7:45 AM' />
-            <Message content='asdasdasd' date='8/17/2022, 7:45 AM' />
-            <Message content='asdasdasd' date='8/17/2022, 7:45 AM' />
-            <Message content='asdasdasd' date='8/17/2022, 7:45 AM' />
-            <Message content='asdasdasd' date='8/17/2022, 7:45 AM' />
-            <Message content='asdasdasd' date='8/17/2022, 7:45 AM' />
-            <Message content='asdasdasd' date='8/17/2022, 7:45 AM' />
-            <Message src={selectedConv.userInfo.profilePicture} content='asdasdasd' date='8/17/2022, 7:45 AM' />
-            <Message content='asdasdasd' date='8/17/2022, 7:45 AM' />
-            <Message src={selectedConv.userInfo.profilePicture} content='asdasdasd' date='8/17/2022, 7:45 AM' />
-            <Message src={selectedConv.userInfo.profilePicture} content='asdasdasd' date='8/17/2022, 7:45 AM' />
-            <Message src={selectedConv.userInfo.profilePicture} content='asdasdasd' date='8/17/2022, 7:45 AM' />
-            <Message content='asdasdasd' date='8/17/2022, 7:45 AM' />
-
+            {
+                messages.map((message) => {
+                    return <Message src={selectedConv.userInfo.profilePicture} message={message} key={message._id} />
+                })
+            }
         </div>
     )
 }

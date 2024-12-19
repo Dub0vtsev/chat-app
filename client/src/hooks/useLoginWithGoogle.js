@@ -6,11 +6,14 @@ const useLoginWithGoogle = () => {
     const { setAuthUser } = useContext(AuthContext);
     const loginWithGoogle = async (credentialResponse) => {
         try {
-            const { data } = await $host.post('auth/google-auth', credentialResponse, {
-                headers: {
-                    "Content-Type": "application/json",
-                }
-            })
+            const { data } = await $host.post(
+                'auth/google-auth',
+                credentialResponse,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                })
 
             const { payload } = data;
             setAuthUser(payload);

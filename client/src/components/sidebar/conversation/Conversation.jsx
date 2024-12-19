@@ -17,26 +17,34 @@ const Conversation = ({ conv, lastMessage, userInfo }) => {
         });
     };
 
+    if (lastMessage?.message?.length >= 23)
+        lastMessage.message = lastMessage?.message.slice(0, 23) + '...';
+
     return (
         <div
             className={`conversation ${isSelected ? "selected" : ""}`}
             onClick={() => { setSelectedConv(conv) }}
         >
-            <Avatar src={userInfo.profilePicture} width={45} height={45} />
+            <Avatar src={userInfo?.profilePicture} width={45} height={45} />
             <div className="shortInfo">
                 <p className="userName">
-                    {userInfo.fullName}
+                    {userInfo?.fullName}
                 </p>
                 <p className="lastMessage">
                     {
-                        (lastMessage.message.length >= 25) ?
-                            lastMessage.message.slice(0, 25) + '...'
-                            :
+                        (lastMessage) ?
                             lastMessage.message
+                            :
+                            "New chat"
                     }
                 </p>
             </div>
-            <p className='date'>{formatDate(lastMessage.createdAt)}</p>
+            <p className='date'>{
+                (lastMessage) ?
+                    formatDate(lastMessage?.createdAt)
+                    :
+                    ""
+            }</p>
         </div>
     )
 }
