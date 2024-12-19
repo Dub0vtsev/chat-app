@@ -6,7 +6,8 @@ const Avatar = ({ src, width, height }) => {
         <img className='avatar'
             src={src} alt='avatar'
             width={width}
-            height={height} />
+            height={height}
+            style={{ "borderRadius": "50%" }} />
     )
 }
 

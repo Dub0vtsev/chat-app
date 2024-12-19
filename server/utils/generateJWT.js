@@ -12,6 +12,8 @@ const generateJWT = (user, res) => {
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7d in milliseconds
             sameSite: "strict"
         });
+
+    return token;
 };
 
 export default generateJWT;

@@ -1,6 +1,6 @@
 .conversation {
     display: flex;
-    height: 85px;
+    min-height: 85px;
     width: 100%;
     align-items: center;
     border-bottom: 2px solid #A3A6AE;

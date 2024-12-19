@@ -2,6 +2,8 @@ import { OAuth2Client } from 'google-auth-library';
 import generateJWT from '../utils/generateJWT.js';
 import User from '../models/userModel.js';
 
+import jwt from 'jsonwebtoken';
+
 const client = new OAuth2Client();
 
 export const login = (req, res) => {
@@ -12,13 +14,25 @@ export const signup = (req, res) => {
     res.send("User signup"); // TODO manual sign up
 };
 
+export const verifyToken = async (req, res) => {
+    const { token } = req.body;
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        res.status(200).json({ valid: true, user: decoded });
+    } catch (err) {
+        res.status(401).json({ valid: false, error: "Invalid or expired token" });
+    }
+};
+
 export const googleAuth = async (req, res) => {
-    const { credential, client_id } = req.body;
+    const { credential, clientId } = req.body;
     try {
         const ticket = await client.verifyIdToken({
             idToken: credential,
-            audience: client_id,
+            audience: clientId,
         });
+
         const payload = ticket.getPayload();
 
         const { email, name, picture } = payload;
@@ -39,7 +53,7 @@ export const googleAuth = async (req, res) => {
             throw new Error('User creation or retrieval failed.');
         }
 
-        generateJWT(user, res);
+        payload.token = generateJWT(user, res);
         res.status(200).json({ payload });
     } catch (err) {
         res.status(400).json({ error: `Error: ${err.message}` });

@@ -1,6 +1,7 @@
 .messageContainer {
     display: flex;
     flex-direction: column;
+    min-width: 300px;
 }
 
 .message {
@@ -15,7 +16,7 @@
     padding: 15px 20px;
 }
 
-.message:last-of-type {
+.messageContainer:last-of-type {
     margin-bottom: 25px;
 }
 
@@ -40,9 +41,9 @@
 }
 
 .chatStart .messageDate {
-    left: 80px;
+    left: 85px;
 }
 
 .chatEnd .messageDate {
-    right: 40px;
+    right: 35px;
 }

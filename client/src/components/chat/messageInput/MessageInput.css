@@ -3,6 +3,7 @@
     justify-content: start;
     align-items: center;
     height: 120px;
+    width: 100%;
     border-right: none;
     background-color: #f5f5f5;
     border-top: 2px solid #A3A6AE;
@@ -30,5 +31,10 @@
     background: url("../../../assets/sendMessage.svg") center / contain no-repeat;
     cursor: pointer;
     border: none;
+    background-color: transparent;
+    transition: none;
+}
+
+.sendIcon:hover {
     background-color: transparent;
 }
