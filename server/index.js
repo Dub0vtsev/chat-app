@@ -18,8 +18,10 @@ const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cors({
-    credentials: true,
-    origin: 'https://chat-app-3c1c.onrender.com'
+    origin: 'https://chat-app-3c1c.onrender.com',
+    methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+    allowedHeaders: ['Content-Type'],
+    credentials: true
 }));
 app.use(cookieParser());
 

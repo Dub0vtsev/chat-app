@@ -7,7 +7,7 @@ const useLoginWithGoogle = () => {
     const loginWithGoogle = async (credentialResponse) => {
         try {
             const { data } = await $host.post(
-                'auth/google-auth',
+                '/auth/google-auth',
                 credentialResponse,
                 {
                     headers: {

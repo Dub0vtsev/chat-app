@@ -18,9 +18,11 @@ export const AuthContextProvider = ({ children }) => {
         const verifyToken = async () => {
             if (authUser?.token) {
                 try {
-                    const response = await $host.post('/auth/verify-token', {
-                        token: authUser.token,
-                    });
+                    const response = await $host.post(
+                        '/auth/verify-token',
+                        {
+                            token: authUser.token,
+                        });
 
                     if (response.status === 200) {
                         setAuthUser(authUser);
