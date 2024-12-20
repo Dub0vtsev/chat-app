@@ -2,28 +2,28 @@ import { useEffect } from 'react';
 import { $host } from '../http/index.js';
 import useConversations from '../store/useConversations.js';
 
-const useGetConversations = () => {
-    const { conversations, setConversations } = useConversations();
+const useGetUsers = () => {
+    const { usersWithoutConversation, setUsersWithoutConversation } = useConversations();
 
     useEffect(() => {
-        const getConversations = async () => {
+        const getUsers = async () => {
             try {
-                const { data } = await $host.get('users/', {
+                const { data } = await $host.get('users/getUsersWithNoConversation', {
                     headers: {
                         "Content-Type": "application/json",
                     }
                 })
 
-                setConversations(data);
+                setUsersWithoutConversation(data);
             } catch (error) {
                 console.log(error.message);
             }
         }
 
-        getConversations();
+        getUsers();
     }, []);
 
-    return { conversations };
+    return { usersWithoutConversation };
 }
 
-export default useGetConversations
+export default useGetUsers

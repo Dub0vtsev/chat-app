@@ -9,10 +9,16 @@
 
 .userTo {
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
     height: 100px;
     border-right: none;
+}
+
+.infoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .noChat {
@@ -31,4 +37,17 @@
     font-size: 42px;
     text-transform: uppercase;
     font-weight: bold;
+}
+
+.infoContainer:last-of-type img {
+    margin-left: 10px;
+}
+
+.infoContainer:last-of-type img:hover {
+    cursor: pointer;
+}
+
+.newNameInput {
+    width: 100%;
+    margin-bottom: 20px;
 }

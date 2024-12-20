@@ -16,7 +16,7 @@ const Message = ({ src, message }) => {
             year: 'numeric',  // "2024"
             hour: '2-digit',  // "03"
             minute: '2-digit',// "28"
-            hour12: true      // AM/PM формат
+            hour12: true      // AM/PM
         });
     };
 

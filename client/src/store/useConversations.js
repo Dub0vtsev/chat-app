@@ -13,6 +13,11 @@ const useConversations = create((set) => ({
         set((state) => ({
             conversations: typeof update === 'function' ? update(state.conversations) : update,
         })),
+    usersWithoutConversation: [],
+    setUsersWithoutConversation: (update) =>
+        set((state) => ({
+            usersWithoutConversation: typeof update === 'function' ? update(state.usersWithoutConversation) : update,
+        })),
 }))
 
 export default useConversations;

@@ -16,16 +16,38 @@ const useSendMessage = () => {
                 }
             );
 
+            // Добавляем отправленное сообщение в список
             setMessages((prevMessages) => {
-                return [...prevMessages, data];
+                return [...prevMessages, data.userMessage];
             });
+
+            // Обновляем информацию о последнем сообщении в диалоге
             setConversations((prevConversations) => {
                 return prevConversations.map((conv) =>
                     conv._id === selectedConv._id
-                        ? { ...conv, lastMessage: data }
+                        ? { ...conv, lastMessage: data.userMessage }
                         : conv
                 );
             });
+
+            console.log(data.botMessage)
+
+            // Если есть автоответ от бота, добавляем его через 3 секунды
+            if (data.botMessage) {
+                setTimeout(() => {
+                    setMessages((prevMessages) => {
+                        return [...prevMessages, data.botMessage];
+                    });
+
+                    setConversations((prevConversations) => {
+                        return prevConversations.map((conv) =>
+                            conv._id === selectedConv._id
+                                ? { ...conv, lastMessage: data.botMessage }
+                                : conv
+                        );
+                    });
+                }, 3000); // Задержка 3 секунды перед добавлением автоответа
+            }
         } catch (error) {
             console.log(error.message);
         }

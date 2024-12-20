@@ -17,8 +17,9 @@ const Conversation = ({ conv, lastMessage, userInfo }) => {
         });
     };
 
-    if (lastMessage?.message?.length >= 23)
-        lastMessage.message = lastMessage?.message.slice(0, 23) + '...';
+    const truncatedMessage = lastMessage?.message?.length > 23
+        ? lastMessage.message.slice(0, 23) + '...'
+        : lastMessage?.message;
 
     return (
         <div
@@ -32,10 +33,9 @@ const Conversation = ({ conv, lastMessage, userInfo }) => {
                 </p>
                 <p className="lastMessage">
                     {
-                        (lastMessage) ?
-                            lastMessage.message
-                            :
-                            "New chat"
+                        truncatedMessage
+                        ||
+                        "New chat"
                     }
                 </p>
             </div>
