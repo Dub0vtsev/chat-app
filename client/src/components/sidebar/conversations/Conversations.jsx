@@ -8,7 +8,7 @@ const Conversations = () => {
     const { conversations } = useGetConversations();
     return (
         <div className='conversationsContainer'>
-            <h1>Chats</h1>
+            <h1 className='chats'>Chats</h1>
             {
                 conversations.map((el) => {
                     return (
