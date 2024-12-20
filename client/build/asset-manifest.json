@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6ad05283.css",
+    "main.js": "/static/js/main.724a9abf.js",
+    "static/media/settings.svg": "/static/media/settings.f5c48eb24d17b26def701acc4c00f3ab.svg",
+    "static/media/linkedin.svg": "/static/media/linkedin.7e4219bea7cd46638ed308d96caa2bde.svg",
+    "static/media/github.svg": "/static/media/github.d9449bc3661162d76862e32a14fc136a.svg",
+    "static/media/bin.svg": "/static/media/bin.9f4d91c9dc1eb6b2b6cc18c47acf030e.svg",
+    "static/media/write.svg": "/static/media/write.2f90a1dc9d9cff5dd30ea892e107c5f9.svg",
+    "static/media/search.svg": "/static/media/search.50186b1db8cd5b07d694.svg",
+    "static/media/facebook.svg": "/static/media/facebook.faf0a0a42a5e9a74d1bc3d1c85a11fbc.svg",
+    "index.html": "/index.html",
+    "static/media/sendMessage.svg": "/static/media/sendMessage.ac087e4e3839af369649.svg",
+    "main.6ad05283.css.map": "/static/css/main.6ad05283.css.map",
+    "main.724a9abf.js.map": "/static/js/main.724a9abf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6ad05283.css",
+    "static/js/main.724a9abf.js"
+  ]
+}
