@@ -27,6 +27,11 @@ export const verifyToken = async (req, res) => {
 };
 
 export const googleAuth = async (req, res) => {
+
+    console.log('Request received at /auth/google-auth');
+    console.log('Request body:', req.body);
+
+
     const { credential, clientId } = req.body;
     try {
         const ticket = await client.verifyIdToken({
