@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Login.css';
 
-import GoogleAuth from '../../components/GoogleAuth.jsx';
+import GoogleAuth from '../../components/googleAuth/GoogleAuth.jsx';
 import Marquee from '../../components/marquee/Marquee.jsx';
 
 import linkedin from '../../assets/linkedin.svg';
