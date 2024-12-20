@@ -12,7 +12,7 @@ export const AuthContextProvider = ({ children }) => {
         null
     );
 
-    const { selectedConv, setSelectedConv } = useConversations();
+    const { setSelectedConv } = useConversations();
 
     useEffect(() => {
         const verifyToken = async () => {

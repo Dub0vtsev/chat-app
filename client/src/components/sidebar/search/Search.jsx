@@ -4,14 +4,12 @@ import write from '../../../assets/write.svg';
 import './Search.css';
 import useGetUsers from '../../../hooks/useGetUsers';
 import Avatar from '../../avatar/Avatar';
-import useConversations from '../../../store/useConversations';
 import useCreateConversation from '../../../hooks/useCreateConversation';
 
 const Search = () => {
     const [modalIsOpen, setModalOpen] = useState(false);
     const { usersWithoutConversation } = useGetUsers();
     const { createConversation } = useCreateConversation();
-    const { selectedConv, setSelectedConv } = useConversations();
 
     const handleCreateConv = async (reciever) => {
         if (!reciever)
@@ -19,7 +17,6 @@ const Search = () => {
 
         await createConversation(reciever);
         setModalOpen(false);
-        //setSelectedConv('');
     }
 
     return (

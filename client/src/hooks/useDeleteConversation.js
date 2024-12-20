@@ -15,6 +15,8 @@ const useDeleteConversation = () => {
                 }
             );
 
+            console.log(data);
+
             setConversations((prevConversations) =>
                 prevConversations.filter((conv) => conv._id !== selectedConv?._id)
             );

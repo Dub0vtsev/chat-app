@@ -2,7 +2,7 @@ import useConversations from "../store/useConversations";
 import { $host } from '../http/index.js';
 
 const useSendMessage = () => {
-    const { messages, setMessages, selectedConv, setConversations, conversations } = useConversations();
+    const { setMessages, selectedConv, setConversations } = useConversations();
 
     const sendMessage = async (message) => {
         try {

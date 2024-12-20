@@ -29,7 +29,7 @@ const MessageInput = () => {
                         handleSendMessage();
                     }
                 }} />
-            <button className="sendIcon" onClick={() => { console.log("ASDASDAs") }}></button>
+            <button className="sendIcon" onClick={() => handleSendMessage()}></button>
         </div>
     )
 }

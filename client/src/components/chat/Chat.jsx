@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import './Chat.css';
+import React, { useState } from 'react';
+
 import Avatar from '../avatar/Avatar';
 import Messages from './messages/Messages';
 import MessageInput from './messageInput/MessageInput';
-import useConversations from '../../store/useConversations';
 import Modal from '../modal/Modal.jsx';
-import settings from '../../assets/settings.svg';
-import bin from '../../assets/bin.svg';
+
+import useConversations from '../../store/useConversations';
 import useChangeName from '../../hooks/useChangeName.js';
 import useDeleteConversation from '../../hooks/useDeleteConversation.js';
+
+import settings from '../../assets/settings.svg';
+import bin from '../../assets/bin.svg';
+
+import './Chat.css';
 
 const Chat = () => {
     const { selectedConv } = useConversations();
