@@ -2,13 +2,13 @@ import useConversations from "../store/useConversations";
 import { $host } from '../http/index.js';
 
 const useSendMessage = () => {
-    const { setMessages, selectedConv, setConversations } = useConversations();
+    const { messages, setMessages, selectedConv, setConversations, conversations } = useConversations();
 
     const sendMessage = async (message) => {
         try {
             const { data } = await $host.post(
                 `messages/send/${selectedConv.userInfo._id}`,
-                { "message": message },
+                { message },
                 {
                     headers: {
                         "Content-Type": "application/json",
@@ -16,23 +16,35 @@ const useSendMessage = () => {
                 }
             );
 
-            // Добавляем отправленное сообщение в список
-            setMessages((prevMessages) => {
-                return [...prevMessages, data.userMessage];
-            });
+            if (data) {
+                if (data.userMessage) {
+                    setMessages((prevMessages) => {
+                        return [...prevMessages, data.userMessage];
+                    });
 
-            // Обновляем информацию о последнем сообщении в диалоге
-            setConversations((prevConversations) => {
-                return prevConversations.map((conv) =>
-                    conv._id === selectedConv._id
-                        ? { ...conv, lastMessage: data.userMessage }
-                        : conv
-                );
-            });
+                    setConversations((prevConversations) => {
+                        return prevConversations.map((conv) =>
+                            conv._id === selectedConv._id
+                                ? { ...conv, lastMessage: data.userMessage }
+                                : conv
+                        );
+                    });
+                } else {
+                    setMessages((prevMessages) => {
+                        return [...prevMessages, data];
+                    });
 
-            console.log(data.botMessage)
+                    setConversations((prevConversations) => {
+                        return prevConversations.map((conv) =>
+                            conv._id === selectedConv._id
+                                ? { ...conv, lastMessage: data }
+                                : conv
+                        );
+                    });
+                }
+            }
 
-            // Если есть автоответ от бота, добавляем его через 3 секунды
+            // Если есть автоответ от бота, добавляем его с задержкой
             if (data.botMessage) {
                 setTimeout(() => {
                     setMessages((prevMessages) => {
@@ -46,10 +58,11 @@ const useSendMessage = () => {
                                 : conv
                         );
                     });
-                }, 3000); // Задержка 3 секунды перед добавлением автоответа
+                }, 3000); // Задержка 3 секунды
             }
+
         } catch (error) {
-            console.log(error.message);
+            console.error("Error sending message:", error.message);
         }
     };
 

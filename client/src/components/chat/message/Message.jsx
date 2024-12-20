@@ -6,7 +6,7 @@ import { AuthContext } from '../../../context/AuthContext';
 const Message = ({ src, message }) => {
 
     const { authUser } = useContext(AuthContext);
-    const isFromCurrentUser = authUser._id === message.sender;
+    const isFromCurrentUser = authUser._id === message?.sender;
 
     const formatDateTime = (isoDate) => {
         const date = new Date(isoDate);
@@ -25,13 +25,13 @@ const Message = ({ src, message }) => {
             {!isFromCurrentUser ?
                 <div className="message chatStart">
                     <Avatar src={src} width={40} height={40} />
-                    <p>{message.message}</p>
-                    <span className='messageDate'>{formatDateTime(message.createdAt)}</span>
+                    <p>{message?.message}</p>
+                    <span className='messageDate'>{formatDateTime(message?.createdAt)}</span>
                 </div>
                 :
                 <div className="message chatEnd">
-                    <p>{message.message}</p>
-                    <span className='messageDate'>{formatDateTime(message.createdAt)}</span>
+                    <p>{message?.message}</p>
+                    <span className='messageDate'>{formatDateTime(message?.createdAt)}</span>
                 </div>
             }
         </div>

@@ -12,7 +12,7 @@ const Messages = () => {
         <div className='messagesContainer'>
             {
                 messages.map((message) => {
-                    return <Message src={selectedConv?.userInfo?.profilePicture} message={message} key={message._id} />
+                    return <Message src={selectedConv?.userInfo?.profilePicture} message={message} key={message?._id} />
                 })
             }
         </div>

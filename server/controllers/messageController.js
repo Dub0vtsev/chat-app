@@ -35,21 +35,19 @@ export const sendMessage = async (req, res) => {
 
         await Promise.all([conversation.save(), newMessage.save()]);
 
-        // Если сообщение отправлено боту, запрашиваем автоответ
         if (isBotMessage) {
             try {
-                // Получаем случайную цитату с API
+
                 const response = await axios.get('http://api.quotable.io/random');
                 const botMessage = response.data.content;
 
-                // Создаём сообщение автоответа от бота
+
                 const botMessageData = new Message({
-                    sender: recieverId, // ID бота
-                    reciever: senderId,  // Отправляется пользователю
+                    sender: recieverId,
+                    reciever: senderId,
                     message: botMessage
                 });
 
-                // Добавляем его в диалог
                 conversation.messages.push(botMessageData._id);
                 await botMessageData.save();
                 await conversation.save();
@@ -115,7 +113,6 @@ export const deleteConversation = async (req, res) => {
         const { selectedConv } = req.params;
 
         const conversation = await Conversation.findById(selectedConv);
-        console.log(selectedConv)
 
         if (!conversation) {
             return res.status(404).json({ error: "Conversation not found" });
