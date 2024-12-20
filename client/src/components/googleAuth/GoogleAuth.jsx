@@ -7,6 +7,7 @@ const GoogleAuth = () => {
     const { loginWithGoogle } = useLoginWithGoogle();
 
     const handleLogin = async (credentialResponse) => {
+        console.log(credentialResponse)
         await loginWithGoogle(credentialResponse);
     }
 

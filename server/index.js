@@ -20,6 +20,12 @@ app.use(express.json());
 app.use(cors({ credentials: true, origin: true }));
 app.use(cookieParser());
 
+app.use((req, res, next) => {
+    res.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups"); // Разрешить всплывающие окна
+    res.setHeader("Cross-Origin-Embedder-Policy", "unsafe-none"); // Снять ограничения на встраивание
+    next();
+});
+
 app.use("/auth", authRoutes);
 app.use("/messages", messageRoutes);
 app.use("/users", userRoutes);
